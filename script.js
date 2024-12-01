@@ -19,28 +19,34 @@ document.getElementById("gerar-pdf").addEventListener("click", async function ()
         return;
     }
 
-    // Carregar o PDF existente
-    const pdfUrl = "./guia-sulamerica.pdf";
-    const existingPdfBytes = await fetch(pdfUrl).then(res => res.arrayBuffer());
+    try {
+        // Carregar o PDF existente
+        const pdfUrl = "./guia-sulamerica.pdf";
+        const existingPdfBytes = await fetch(pdfUrl).then(res => res.arrayBuffer());
 
-    // Carregar o PDF com PDF-Lib
-    const { PDFDocument } = PDFLib;
-    const pdfDoc = await PDFDocument.load(existingPdfBytes);
+        // Carregar o PDF com PDF-Lib
+        const { PDFDocument } = PDFLib;
+        const pdfDoc = await PDFDocument.load(existingPdfBytes);
 
-    // Preencher campos do PDF (ajuste os nomes dos campos conforme necessário)
-    const form = pdfDoc.getForm();
-    form.getTextField("7 - Nome").setText(nome);
-    form.getTextField("data_nascimento").setText(dataNascimento);  // Substitua pelo nome exato
-    form.getTextField("cpf").setText(cpf);  // Substitua pelo nome exato
-    form.getTextField("numero_carteirinha").setText(numeroCarteirinha);  // Substitua pelo nome exato
-    form.getTextField("data_atendimento").setText(dataAtendimento);  // Substitua pelo nome exato
-    form.getTextField("data_validade").setText(dataValidade);  // Substitua pelo nome exato
+        // Preencher campos do PDF (ajuste os nomes dos campos conforme necessário)
+        const form = pdfDoc.getForm();
+        form.getTextField("7 - Nome").setText(nome);
+        form.getTextField("data_nascimento").setText(dataNascimento);  // Substitua pelo nome exato
+        form.getTextField("cpf").setText(cpf);  // Substitua pelo nome exato
+        form.getTextField("numero_carteirinha").setText(numeroCarteirinha);  // Substitua pelo nome exato
+        form.getTextField("data_atendimento").setText(dataAtendimento);  // Substitua pelo nome exato
+        form.getTextField("data_validade").setText(dataValidade);  // Substitua pelo nome exato
 
-    // Salvar o PDF preenchido
-    const pdfBytes = await pdfDoc.save();
-    const blob = new Blob([pdfBytes], { type: "application/pdf" });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = "guia-sulamerica-preenchida.pdf";
-    link.click();
+        // Salvar o PDF preenchido
+        const pdfBytes = await pdfDoc.save();
+        const blob = new Blob([pdfBytes], { type: "application/pdf" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "guia-sulamerica-preenchida.pdf";
+        link.click();
+
+    } catch (error) {
+        console.error("Erro ao gerar o PDF:", error);
+        alert("Ocorreu um erro ao gerar a guia. Tente novamente.");
+    }
 });
