@@ -35,4 +35,7 @@ document.getElementById("gerar-pdf").addEventListener("click", async function ()
         }
 
     } catch (error) {
-        console.error("Erro ao gerar o PDF:", error);  
+        console.error("Erro ao gerar o PDF:", error);  // Exibe o erro no console
+        alert("Ocorreu um erro ao gerar a guia. Tente novamente.");
+    }
+});
