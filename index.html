@@ -4,33 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Preenchimento de Guia</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Preencher Guia de Plano de Saúde</h1>
     <form id="form-guia">
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome">
-        <br><br>
-        <label for="data_nascimento">Data de Nascimento:</label>
-        <input type="date" id="data_nascimento" name="data_nascimento">
-        <br><br>
-        <label for="cpf">CPF:</label>
-        <input type="text" id="cpf" name="cpf">
-        <br><br>
-        <label for="numero_carteirinha">Número da Carteirinha:</label>
-        <input type="text" id="numero_carteirinha" name="numero_carteirinha">
-        <br><br>
-        <label for="data_atendimento">Data do Atendimento:</label>
-        <input type="date" id="data_atendimento" name="data_atendimento">
-        <br><br>
-        <label for="data_validade">Data de Validade:</label>
-        <input type="date" id="data_validade" name="data_validade">
-        <br><br>
-        <label for="plano_saude">Plano de Saúde:</label>
-        <select id="plano_saude" name="plano_saude">
-            <option value="SulAmerica">SulAmérica</option>
-            <option value="PostalSaude">Postal Saúde</option>
-        </select>
         <br><br>
         <button type="button" id="gerar-pdf">Gerar Guia</button>
     </form>
