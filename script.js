@@ -1,4 +1,4 @@
-document.getElementById("gerar-pdf").addEventListener("click", function () {
+document.getElementById("gerar-pdf").addEventListener("click", async function () {
     // Obter os valores dos campos
     const nome = document.getElementById("nome").value;
     const dataNascimento = document.getElementById("data-nascimento").value;
@@ -14,22 +14,33 @@ document.getElementById("gerar-pdf").addEventListener("click", function () {
         return;
     }
 
-    // Criar o PDF
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
+    if (planoSaude !== "SulAmerica") {
+        alert("Atualmente, apenas o plano SulAmérica é suportado.");
+        return;
+    }
 
-    // Adicionar texto ao PDF
-    doc.setFont("Arial");
-    doc.setFontSize(12);
-    doc.text("Guia de Plano de Saúde", 10, 10);
-    doc.text(`Nome: ${nome}`, 10, 20);
-    doc.text(`Data de Nascimento: ${dataNascimento}`, 10, 30);
-    doc.text(`CPF: ${cpf}`, 10, 40);
-    doc.text(`Número da Carteirinha: ${numeroCarteirinha}`, 10, 50);
-    doc.text(`Data do Atendimento: ${dataAtendimento}`, 10, 60);
-    doc.text(`Data de Validade da Carteira: ${dataValidade}`, 10, 70);
-    doc.text(`Plano de Saúde: ${planoSaude}`, 10, 80);
+    // Carregar o PDF existente
+    const pdfUrl = "./guia-sulamerica.pdf";
+    const existingPdfBytes = await fetch(pdfUrl).then(res => res.arrayBuffer());
 
-    // Salvar o PDF
-    doc.save("guia.pdf");
+    // Carregar o PDF com PDF-Lib
+    const { PDFDocument } = PDFLib;
+    const pdfDoc = await PDFDocument.load(existingPdfBytes);
+
+    // Preencher campos do PDF (ajuste os nomes dos campos para corresponder ao seu PDF)
+    const form = pdfDoc.getForm();
+    form.getTextField("nome").setText(nome);
+    form.getTextField("data_nascimento").setText(dataNascimento);
+    form.getTextField("cpf").setText(cpf);
+    form.getTextField("numero_carteirinha").setText(numeroCarteirinha);
+    form.getTextField("data_atendimento").setText(dataAtendimento);
+    form.getTextField("data_validade").setText(dataValidade);
+
+    // Salvar o PDF preenchido
+    const pdfBytes = await pdfDoc.save();
+    const blob = new Blob([pdfBytes], { type: "application/pdf" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "guia-sulamerica-preenchida.pdf";
+    link.click();
 });
