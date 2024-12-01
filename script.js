@@ -8,16 +8,16 @@ document.getElementById("gerar-pdf").addEventListener("click", async function ()
 
     try {
         // Carregar o PDF existente
-        const pdfUrl = "./guia-sulamerica.pdf";  // Certifique-se de que o arquivo PDF esteja na pasta correta
+        const pdfUrl = "./guia-sulamerica.pdf";  // Caminho para o arquivo PDF
         const existingPdfBytes = await fetch(pdfUrl).then(res => res.arrayBuffer());
 
         // Carregar o PDF com PDF-Lib
         const { PDFDocument } = PDFLib;
         const pdfDoc = await PDFDocument.load(existingPdfBytes);
 
-        // Preencher apenas o campo "Nome"
+        // Preencher o campo "Nome" do PDF
         const form = pdfDoc.getForm();
-        form.getTextField("nome").setText(nome);  // Campo "Nome" do PDF
+        form.getTextField("7 - Nome").setText(nome);  // Nome do campo no PDF
 
         // Salvar o PDF preenchido
         const pdfBytes = await pdfDoc.save();
@@ -28,7 +28,7 @@ document.getElementById("gerar-pdf").addEventListener("click", async function ()
         link.click();
 
     } catch (error) {
-        console.error("Erro ao gerar o PDF:", error);  // Mostra o erro no console
+        console.error("Erro ao gerar o PDF:", error);  // Exibe o erro no console
         alert("Ocorreu um erro ao gerar a guia. Tente novamente.");
     }
 });
