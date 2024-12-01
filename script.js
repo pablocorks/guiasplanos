@@ -27,14 +27,14 @@ document.getElementById("gerar-pdf").addEventListener("click", async function ()
     const { PDFDocument } = PDFLib;
     const pdfDoc = await PDFDocument.load(existingPdfBytes);
 
-    // Preencher campos do PDF (ajuste os nomes dos campos para corresponder ao seu PDF)
+    // Preencher campos do PDF (ajuste os nomes dos campos conforme necessário)
     const form = pdfDoc.getForm();
-    form.getTextField("nome").setText(nome);
-    form.getTextField("data_nascimento").setText(dataNascimento);
-    form.getTextField("cpf").setText(cpf);
-    form.getTextField("numero_carteirinha").setText(numeroCarteirinha);
-    form.getTextField("data_atendimento").setText(dataAtendimento);
-    form.getTextField("data_validade").setText(dataValidade);
+    form.getTextField("7 - Nome").setText(nome);
+    form.getTextField("data_nascimento").setText(dataNascimento);  // Substitua pelo nome exato
+    form.getTextField("cpf").setText(cpf);  // Substitua pelo nome exato
+    form.getTextField("numero_carteirinha").setText(numeroCarteirinha);  // Substitua pelo nome exato
+    form.getTextField("data_atendimento").setText(dataAtendimento);  // Substitua pelo nome exato
+    form.getTextField("data_validade").setText(dataValidade);  // Substitua pelo nome exato
 
     // Salvar o PDF preenchido
     const pdfBytes = await pdfDoc.save();
