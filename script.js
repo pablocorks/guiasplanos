@@ -15,12 +15,12 @@ document.getElementById("gerar-pdf").addEventListener("click", async function ()
         const { PDFDocument } = PDFLib;
         const pdfDoc = await PDFDocument.load(existingPdfBytes);
 
-        // Verificar se o campo "7 - Nome" existe
+        // Verificar se o campo "nomepablo" existe no PDF
         const form = pdfDoc.getForm();
-        const nomeField = form.getTextField("7 - Nome");
+        const nomeField = form.getTextField("nomepablo");
 
         if (nomeField) {
-            // Preencher o campo "Nome" do PDF
+            // Preencher o campo "nomepablo" do PDF com o nome digitado
             nomeField.setText(nome);
 
             // Salvar o PDF preenchido
@@ -31,11 +31,8 @@ document.getElementById("gerar-pdf").addEventListener("click", async function ()
             link.download = "guia-sulamerica-preenchida.pdf";
             link.click();
         } else {
-            alert("Campo 'Nome' não encontrado no PDF.");
+            alert("Campo 'nomepablo' não encontrado no PDF.");
         }
 
     } catch (error) {
-        console.error("Erro ao gerar o PDF:", error);  // Exibe o erro no console
-        alert("Ocorreu um erro ao gerar a guia. Tente novamente.");
-    }
-});
+        console.error("Erro ao gerar o PDF:", error);  
