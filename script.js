@@ -17,7 +17,7 @@ document.getElementById("gerar-pdf").addEventListener("click", async function ()
 
         // Preencher apenas o campo "Nome"
         const form = pdfDoc.getForm();
-        form.getTextField("7 - Nome").setText(nome);  // Campo "Nome" do PDF
+        form.getTextField("nome").setText(nome);  // Campo "Nome" do PDF
 
         // Salvar o PDF preenchido
         const pdfBytes = await pdfDoc.save();
