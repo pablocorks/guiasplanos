@@ -3,31 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Preenchimento de Guias</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Gerar Guia de Plano de Saúde</title>
 </head>
-<body>
-    <h1>Preenchimento de Guias de Planos de Saúde</h1>
-    <form id="guia-form">
-        <label for="nome">Nome:</label>
+<body style="font-family: Arial, sans-serif; background-color: #f0e0c9; padding: 20px;">
+
+    <h1>Preencha as Informações</h1>
+
+    <form id="form-guia">
+        <label for="nome">Nome:</label><br>
         <input type="text" id="nome" name="nome" required><br><br>
 
-        <label for="data-nascimento">Data de Nascimento:</label>
+        <label for="data-nascimento">Data de Nascimento:</label><br>
         <input type="date" id="data-nascimento" name="data-nascimento" required><br><br>
 
-        <label for="cpf">CPF:</label>
+        <label for="cpf">CPF:</label><br>
         <input type="text" id="cpf" name="cpf" required><br><br>
 
-        <label for="numero-carteirinha">Número da Carteirinha:</label>
+        <label for="numero-carteirinha">Número da Carteirinha:</label><br>
         <input type="text" id="numero-carteirinha" name="numero-carteirinha" required><br><br>
 
-        <label for="data-atendimento">Data do Atendimento:</label>
+        <label for="data-atendimento">Data do Atendimento:</label><br>
         <input type="date" id="data-atendimento" name="data-atendimento" required><br><br>
 
-        <label for="data-validade">Data de Validade da Carteira:</label>
+        <label for="data-validade">Data de Validade da Carteira:</label><br>
         <input type="date" id="data-validade" name="data-validade" required><br><br>
 
-        <label for="plano-saude">Plano de Saúde:</label>
+        <label for="plano-saude">Plano de Saúde:</label><br>
         <select id="plano-saude" name="plano-saude" required>
             <option value="SulAmerica">SulAmérica</option>
             <option value="PostalSaude">Postal Saúde</option>
@@ -35,8 +36,9 @@
 
         <button type="button" id="gerar-pdf">Gerar Guia</button>
     </form>
-<script src="libs/jspdf.umd.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
     <script src="script.js"></script>
+
 </body>
 </html>
