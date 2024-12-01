@@ -1,41 +1,23 @@
 document.getElementById("gerar-pdf").addEventListener("click", async function () {
-    // Obter os valores dos campos
     const nome = document.getElementById("nome").value;
-    const dataNascimento = document.getElementById("data-nascimento").value;
-    const cpf = document.getElementById("cpf").value;
-    const numeroCarteirinha = document.getElementById("numero-carteirinha").value;
-    const dataAtendimento = document.getElementById("data-atendimento").value;
-    const dataValidade = document.getElementById("data-validade").value;
-    const planoSaude = document.getElementById("plano-saude").value;
 
-    // Verificar se todos os campos estão preenchidos
-    if (!nome || !dataNascimento || !cpf || !numeroCarteirinha || !dataAtendimento || !dataValidade || !planoSaude) {
-        alert("Por favor, preencha todos os campos!");
-        return;
-    }
-
-    if (planoSaude !== "SulAmerica") {
-        alert("Atualmente, apenas o plano SulAmérica é suportado.");
+    if (!nome) {
+        alert("Por favor, preencha o campo Nome!");
         return;
     }
 
     try {
         // Carregar o PDF existente
-        const pdfUrl = "./guia-sulamerica.pdf";
+        const pdfUrl = "./guia-sulamerica.pdf";  // Certifique-se de que o arquivo PDF esteja na pasta correta
         const existingPdfBytes = await fetch(pdfUrl).then(res => res.arrayBuffer());
 
         // Carregar o PDF com PDF-Lib
         const { PDFDocument } = PDFLib;
         const pdfDoc = await PDFDocument.load(existingPdfBytes);
 
-        // Preencher campos do PDF (ajuste os nomes dos campos conforme necessário)
+        // Preencher apenas o campo "Nome"
         const form = pdfDoc.getForm();
-        form.getTextField("7 - Nome").setText(nome);
-        form.getTextField("data_nascimento").setText(dataNascimento);  // Substitua pelo nome exato
-        form.getTextField("cpf").setText(cpf);  // Substitua pelo nome exato
-        form.getTextField("numero_carteirinha").setText(numeroCarteirinha);  // Substitua pelo nome exato
-        form.getTextField("data_atendimento").setText(dataAtendimento);  // Substitua pelo nome exato
-        form.getTextField("data_validade").setText(dataValidade);  // Substitua pelo nome exato
+        form.getTextField("7 - Nome").setText(nome);  // Campo "Nome" do PDF
 
         // Salvar o PDF preenchido
         const pdfBytes = await pdfDoc.save();
@@ -46,7 +28,7 @@ document.getElementById("gerar-pdf").addEventListener("click", async function ()
         link.click();
 
     } catch (error) {
-        console.error("Erro ao gerar o PDF:", error);
+        console.error("Erro ao gerar o PDF:", error);  // Mostra o erro no console
         alert("Ocorreu um erro ao gerar a guia. Tente novamente.");
     }
 });
