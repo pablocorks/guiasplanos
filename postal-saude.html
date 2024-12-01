@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Postal Saúde</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Guia Postal Saúde</h1>
+        <a href="index.html">Voltar para a página inicial</a>
+    </header>
+
+    <main>
+        <h2>Preencha os campos abaixo</h2>
+        <form id="guia-form">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome">
+
+            <label for="numeroguia">Número da Guia:</label>
+            <input type="text" id="numeroguia" name="numeroguia">
+
+            <label for="cpfpaciente">CPF:</label>
+            <input type="text" id="cpfpaciente" name="cpfpaciente">
+
+            <label for="datanascimento">Data de Nascimento:</label>
+            <input type="date" id="datanascimento" name="datanascimento">
+
+            <label for="dataatendimento">Data do Atendimento:</label>
+            <input type="date" id="dataatendimento" name="dataatendimento">
+            <button type="button" id="hoje">Hoje</button>
+
+            <label for="numerocarteira">Número da Carteirinha:</label>
+            <input type="text" id="numerocarteira" name="numerocarteira">
+
+            <label for="datavencimento">Data de Vencimento:</label>
+            <input type="date" id="datavencimento" name="datavencimento">
+
+            <label for="cnspaciente">Número do CNS:</label>
+            <input type="text" id="cnspaciente" name="cnspaciente">
+
+            <button type="submit">Gerar Guia</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Guias de Planos de Saúde</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
