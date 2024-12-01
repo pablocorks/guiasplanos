@@ -15,17 +15,24 @@ document.getElementById("gerar-pdf").addEventListener("click", async function ()
         const { PDFDocument } = PDFLib;
         const pdfDoc = await PDFDocument.load(existingPdfBytes);
 
-        // Preencher o campo "Nome" do PDF
+        // Verificar se o campo "7 - Nome" existe
         const form = pdfDoc.getForm();
-        form.getTextField("7 - Nome").setText(nome);  // Nome do campo no PDF
+        const nomeField = form.getTextField("7 - Nome");
 
-        // Salvar o PDF preenchido
-        const pdfBytes = await pdfDoc.save();
-        const blob = new Blob([pdfBytes], { type: "application/pdf" });
-        const link = document.createElement("a");
-        link.href = URL.createObjectURL(blob);
-        link.download = "guia-sulamerica-preenchida.pdf";
-        link.click();
+        if (nomeField) {
+            // Preencher o campo "Nome" do PDF
+            nomeField.setText(nome);
+
+            // Salvar o PDF preenchido
+            const pdfBytes = await pdfDoc.save();
+            const blob = new Blob([pdfBytes], { type: "application/pdf" });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "guia-sulamerica-preenchida.pdf";
+            link.click();
+        } else {
+            alert("Campo 'Nome' não encontrado no PDF.");
+        }
 
     } catch (error) {
         console.error("Erro ao gerar o PDF:", error);  // Exibe o erro no console
