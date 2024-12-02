@@ -3,28 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guia SulAmérica</title>
+    <title>Instruções - SulAmérica</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Guia SulAmérica</h1>
-        <a href="index.html">Voltar para a página inicial</a>
+        <h1>Instruções para Emitir Guias no Portal SulAmérica</h1>
     </header>
 
     <main>
-        <h2>Instruções para emitir a Guia</h2>
-        <p>Para emitir a guia de atendimento diretamente no site da SulAmérica, siga as instruções abaixo:</p>
-        <ol>
-            <li>Acesse o portal da SulAmérica em <a href="https://www.sulamerica.com.br" target="_blank">www.sulamerica.com.br</a>.</li>
-            <li>Faça login na sua conta com seu CPF e senha.</li>
-            <li>Selecione a opção "Emitir Guia" no menu de serviços.</li>
-            <li>Preencha os dados solicitados e clique em "Gerar Guia".</li>
-        </ol>
+        <section>
+            <h2>Passo a Passo para Emitir a Guia</h2>
+            <ol>
+                <li>
+                    Acesse o <a href="https://saude.sulamericaseguros.com.br/prestador/login/" target="_blank">Site SulAmérica</a>.
+                </li>
+                <li>
+                    Utilize as seguintes credenciais para login:
+                    <ul>
+                        <li><strong>Código Referenciado:</strong> 036019250001</li>
+                        <li><strong>Usuário:</strong> MASTER</li>
+                        <li><strong>Senha:</strong> COOP@202</li>
+                    </ul>
+                </li>
+                <li>
+                    Após o login, vá na aba <strong>"SEGURADO"</strong> e clique em <strong>"Validação de Procedimentos"</strong>.
+                </li>
+                <li>
+                    Digite o número da carteirinha do paciente e clique em <strong>OK</strong>.
+                </li>
+                <li>
+                    No campo **Tipo de Atendimento**, selecione <strong>ELETIVO</strong>, e depois selecione <strong>SP/SADT</strong>.
+                </li>
+                <li>
+                    Preencha os seguintes campos:
+                    <ul>
+                        <li><strong>Número da Guia no Prestador:</strong> 001</li>
+                        <li>
+                            <strong>Nome do Profissional Solicitante:</strong>
+                            Pablo Michel Ribeiro Xavier 
+                            (<a href="javascript:void(0);" onclick="copyText('Pablo Michel Ribeiro Xavier')">Clique AQUI para copiar</a>)
+                        </li>
+                        <li><strong>Conselho Profissional:</strong> Selecione <strong>CRM</strong></li>
+                        <li><strong>UF:</strong> Selecione <strong>MG</strong></li>
+                        <li>
+                            <strong>Número do Conselho:</strong> 98284 
+                            (<a href="javascript:void(0);" onclick="copyText('98284')">Clique AQUI para copiar</a>)
+                        </li>
+                        <li>
+                            <strong>Código e descrição CBO:</strong> 225125 
+                            (<a href="javascript:void(0);" onclick="copyText('225125')">Clique AQUI para copiar</a>)
+                        </li>
+                    </ul>
+                </li>
+                <li>Coloque a data do atendimento.</li>
+                <li>Selecione <strong>Não</strong> em "Recém-Nato".</li>
+                <li>
+                    Em "Caráter do Atendimento", selecione <strong>Eletivo</strong>.
+                </li>
+                <li>
+                    Em "Técnica Utilizada", selecione <strong>Convencional</strong>.
+                </li>
+                <li>
+                    No campo "Procedimento", insira: 10101012 
+                    (<a href="javascript:void(0);" onclick="copyText('10101012')">Clique AQUI para copiar</a>).
+                </li>
+                <li>
+                    Após preencher todos os campos, clique em <strong>Validar Solicitação</strong>. 
+                    A tela será carregada, mas não mudará. Em seguida, clique em <strong>Confirmar</strong>.
+                </li>
+                <li>
+                    Verifique se a guia foi <strong>autorizada</strong> ou <strong>negada</strong>:
+                    <ul>
+                        <li>Se negada, oriente o paciente a ligar para o plano.</li>
+                        <li>Se autorizada, clique em <strong>Visualizar Guia</strong> e imprima.</li>
+                    </ul>
+                </li>
+                <li>
+                    A assinatura do paciente pode ser feita em qualquer espaço da guia.
+                </li>
+            </ol>
+        </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 Guias de Planos de Saúde</p>
+        <a href="index.html">Voltar à Página Inicial</a>
     </footer>
+
+    <script>
+        function copyText(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Texto copiado: ' + text);
+            }).catch(err => {
+                console.error('Erro ao copiar texto: ', err);
+            });
+        }
+    </script>
 </body>
 </html>
